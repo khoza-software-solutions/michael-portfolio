@@ -31,7 +31,7 @@
   width: 36px; height: 36px; border-radius: 50%;
   background: linear-gradient(135deg, var(--lime), var(--ice));
   display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-display); font-weight: 800; font-size: .72rem; color: #0f0f0d;
+  font-family: var(--font-display); font-weight: 800; font-size: .72rem; color: var(--button-text);
   flex-shrink: 0;
 }
 .agentName { font-family: var(--font-display); font-weight: 700; font-size: .85rem; color: var(--cream); }

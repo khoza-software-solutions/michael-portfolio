@@ -1,7 +1,10 @@
 import { useState } from 'react'
+import { ExternalLink } from 'lucide-react'
 import styles from './Credentials.module.css'
 
 const ibm = [
+  { num:'12', issuer:'IBM', name:'IBM Cybersecurity Certificate', date:'Aug 2026' },
+  { num:'13', issuer:'IBM', name:'IBM Z Xplore Advanced', date:'Jul 2026' },
   { num:'01', issuer:'IBM SkillsBuild', name:'Getting Started with Data',                              date:'Jan 28, 2026' },
   { num:'02', issuer:'IBM SkillsBuild', name:'Data Fundamentals',                                      date:'Jan 30, 2026' },
   { num:'03', issuer:'IBM SkillsBuild', name:'Enterprise Data Science in Practice',                    date:'Mar 31, 2026' },
@@ -30,9 +33,13 @@ export default function Credentials() {
         <h2 className="section-title">Digital<br /><span style={{color:'var(--ice)'}}>Credentials</span></h2>
 
         <div className={styles.tabs}>
-          <button className={`${styles.tab} ${tab==='ibm' ? styles.active : ''}`} onClick={() => setTab('ibm')}>IBM Badges (11)</button>
+          <button className={`${styles.tab} ${tab==='ibm' ? styles.active : ''}`} onClick={() => setTab('ibm')}>IBM Credentials ({ibm.length})</button>
           <button className={`${styles.tab} ${tab==='other' ? styles.active : ''}`} onClick={() => setTab('other')}>Other Credentials (2)</button>
         </div>
+
+        <a className="btn-secondary" href="https://www.credly.com/users/michael-khoza.6ad0b0ca" target="_blank" rel="noopener noreferrer" style={{ marginBottom: '2rem' }}>
+          View My Credly Profile <ExternalLink size={16} aria-hidden="true" />
+        </a>
 
         <div className={styles.grid}>
           {(tab === 'ibm' ? ibm : other).map(c => (

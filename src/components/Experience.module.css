@@ -11,3 +11,7 @@
 .title { font-family: var(--font-display); font-weight: 700; font-size: 1rem; color: var(--cream); margin-bottom: .2rem; }
 .org { font-size: .75rem; color: var(--lime); font-weight: 500; margin-bottom: .4rem; text-transform: uppercase; letter-spacing: .05em; }
 .desc { font-size: .84rem; color: var(--khaki); line-height: 1.7; }
+.detailHeading { font-size: .8rem; font-weight: 600; color: var(--cream); margin: 1rem 0 .35rem; }
+@media (max-width: 600px) {
+  .card { flex-direction: column; gap: .75rem; }
+}

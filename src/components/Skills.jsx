@@ -1,12 +1,13 @@
+import { Globe, Settings, Smartphone, Bot, LockKeyhole, Rocket } from 'lucide-react'
 import styles from './Skills.module.css'
 
 const groups = [
-  { icon: '🌐', name: 'Web Frontend',    tags: [{l:'React','c':'lime'},{l:'JavaScript','c':'lime'},{l:'HTML5'},{l:'CSS3'}] },
-  { icon: '⚙️', name: 'Backend & Data',  tags: [{l:'Supabase','c':'ice'},{l:'SQL','c':'ice'},{l:'Python'},{l:'Java'}] },
-  { icon: '📱', name: 'Mobile Dev',      tags: [{l:'Flutter','c':'orange'},{l:'Dart','c':'orange'},{l:'Firebase'}] },
-  { icon: '🤖', name: 'AI & Automation', tags: [{l:'Jotform AI','c':'lime'},{l:'AI Agents','c':'lime'},{l:'Automation'}] },
-  { icon: '🔒', name: 'Cybersecurity',   tags: [{l:'Vulnerability Mgmt','c':'ice'},{l:'GRC','c':'ice'},{l:'IBM Z Security'}] },
-  { icon: '🚀', name: 'Hosting & Deploy',tags: [{l:'Vercel','c':'orange'},{l:'Web Hosting','c':'orange'},{l:'GitHub'}] },
+  { icon: Globe, name: 'Web Frontend',    tags: [{l:'React','c':'lime'},{l:'JavaScript','c':'lime'},{l:'HTML5'},{l:'CSS3'}] },
+  { icon: Settings, name: 'Backend & Data',  tags: [{l:'Supabase','c':'ice'},{l:'SQL','c':'ice'},{l:'Python'},{l:'Java'}] },
+  { icon: Smartphone, name: 'Mobile Dev',      tags: [{l:'Flutter','c':'orange'},{l:'Dart','c':'orange'},{l:'Firebase'}] },
+  { icon: Bot, name: 'AI & Automation', tags: [{l:'Jotform AI','c':'lime'},{l:'AI Agents','c':'lime'},{l:'Automation'}] },
+  { icon: LockKeyhole, name: 'Cybersecurity',   tags: [{l:'Vulnerability Mgmt','c':'ice'},{l:'GRC','c':'ice'},{l:'IBM Z Security'}] },
+  { icon: Rocket, name: 'Hosting & Deploy',tags: [{l:'Vercel','c':'orange'},{l:'Web Hosting','c':'orange'},{l:'GitHub'}] },
 ]
 
 export default function Skills() {
@@ -18,7 +19,7 @@ export default function Skills() {
         <div className={styles.grid}>
           {groups.map(g => (
             <div key={g.name} className={styles.card}>
-              <div className={styles.icon}>{g.icon}</div>
+              <div className={styles.icon}><g.icon size="1em" aria-hidden="true" /></div>
               <div className={styles.name}>{g.name}</div>
               <div className={styles.tags}>
                 {g.tags.map(t => (

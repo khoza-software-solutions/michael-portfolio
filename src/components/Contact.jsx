@@ -1,13 +1,14 @@
+import { Phone, Mail, GraduationCap, CodeXml as Github, BriefcaseBusiness as Linkedin, CircleCheck, TriangleAlert } from 'lucide-react'
 import { useState } from 'react'
 import emailjs from '@emailjs/browser'
 import styles from './Contact.module.css'
 
 const contacts = [
-  { icon:'📞', label:'Phone',            value:'+27 69 431 7707',                href:'tel:+27694317707' },
-  { icon:'✉️', label:'Personal Email',   value:'khozamichael21@gmail.com',        href:'mailto:khozamichael21@gmail.com' },
-  { icon:'🎓', label:'University Email', value:'231954775@tut4life.ac.za',         href:'mailto:231954775@tut4life.ac.za' },
-  { icon:'⌥',  label:'GitHub',           value:'github.com/Michael-Khoza',        href:'https://github.com/Michael-Khoza' },
-  { icon:'in', label:'LinkedIn',         value:'michael-khoza-65781831b',          href:'https://www.linkedin.com/in/michael-khoza-65781831b' },
+  { icon: Phone, label:'Phone',            value:'+27 69 431 7707',                href:'tel:+27694317707' },
+  { icon: Mail, label:'Personal Email',   value:'khozamichael21@gmail.com',        href:'mailto:khozamichael21@gmail.com' },
+  { icon: GraduationCap, label:'University Email', value:'231954775@tut4life.ac.za',         href:'mailto:231954775@tut4life.ac.za' },
+  { icon: Github,  label:'GitHub',           value:'github.com/Michael-Khoza',        href:'https://github.com/Michael-Khoza' },
+  { icon: Linkedin, label:'LinkedIn',         value:'michael-khoza-65781831b',          href:'https://www.linkedin.com/in/michael-khoza-65781831b' },
 ]
 
 export default function Contact() {
@@ -74,7 +75,7 @@ export default function Contact() {
               {contacts.map(c => (
                 <a key={c.label} href={c.href} target={c.href.startsWith('http') ? '_blank' : undefined}
                    rel="noreferrer" className={styles.contactItem}>
-                  <div className={styles.contactIcon}>{c.icon}</div>
+                  <div className={styles.contactIcon}><c.icon size="1em" aria-hidden="true" /></div>
                   <div>
                     <div className={styles.contactLabel}>{c.label}</div>
                     <div className={styles.contactValue}>{c.value}</div>
@@ -116,10 +117,10 @@ export default function Contact() {
             </button>
 
             {status === 'success' && (
-              <div className={styles.success}>✓ Message sent! Michael will get back to you within 24 hours.</div>
+              <div className={styles.success}><CircleCheck size="1em" aria-hidden="true" /> Message sent! Michael will get back to you within 24 hours.</div>
             )}
             {status === 'error' && (
-              <div className={styles.error}>⚠ Failed to send. Please email khozamichael21@gmail.com directly.</div>
+              <div className={styles.error}><TriangleAlert size="1em" aria-hidden="true" /> Failed to send. Please email khozamichael21@gmail.com directly.</div>
             )}
             {status !== 'idle' && status !== 'success' && status !== 'error' && status !== 'loading' && (
               <div className={styles.error}>{status}</div>

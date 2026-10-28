@@ -1,3 +1,4 @@
+import { Globe, Shield, ChartColumn, Bot, CodeXml as Github, BriefcaseBusiness as Linkedin, Mail } from 'lucide-react'
 import styles from './About.module.css'
 
 export default function About() {
@@ -17,9 +18,9 @@ export default function About() {
               <p>When I'm not coding, I'm competing — TelkomX, IBM Z Datathon, FNB Hackathon, Hult Prize. I learn best when there's real stakes involved.</p>
             </div>
             <div className={styles.links}>
-              <a href="https://github.com/Michael-Khoza" target="_blank" rel="noreferrer" className={styles.link}>⌥ GitHub Projects</a>
-              <a href="https://www.linkedin.com/in/michael-khoza-65781831b" target="_blank" rel="noreferrer" className={styles.link}>in LinkedIn</a>
-              <a href="mailto:khozamichael21@gmail.com" className={styles.link}>✉ Email Me</a>
+              <a href="https://github.com/Michael-Khoza" target="_blank" rel="noreferrer" className={styles.link}><Github size="1em" aria-hidden="true" /> GitHub Projects</a>
+              <a href="https://www.linkedin.com/in/michael-khoza-65781831b" target="_blank" rel="noreferrer" className={styles.link}><Linkedin size="1em" aria-hidden="true" /> LinkedIn</a>
+              <a href="mailto:khozamichael21@gmail.com" className={styles.link}><Mail size="1em" aria-hidden="true" /> Email Me</a>
             </div>
           </div>
 
@@ -32,13 +33,13 @@ export default function About() {
             </p>
             <div className={styles.pillars}>
               {[
-                { icon: '🌐', title: 'Software Development', desc: 'Web & mobile platforms' },
-                { icon: '🛡️', title: 'Cybersecurity Services', desc: 'Threat intelligence & monitoring' },
-                { icon: '📊', title: 'Data Science Services', desc: 'AI-powered insights engine' },
-                { icon: '🤖', title: 'Custom AI Agents', desc: 'Automated response systems' },
+                { icon: Globe, title: 'Software Development', desc: 'Web & mobile platforms' },
+                { icon: Shield, title: 'Cybersecurity Services', desc: 'Threat intelligence & monitoring' },
+                { icon: ChartColumn, title: 'Data Science Services', desc: 'AI-powered insights engine' },
+                { icon: Bot, title: 'Custom AI Agents', desc: 'Automated response systems' },
               ].map(p => (
                 <div key={p.title} className={styles.pillar}>
-                  <span className={styles.pillarTitle}>{p.icon} {p.title}</span>
+                  <span className={styles.pillarTitle}><p.icon size="1em" aria-hidden="true" /> {p.title}</span>
                   {p.desc}
                 </div>
               ))}

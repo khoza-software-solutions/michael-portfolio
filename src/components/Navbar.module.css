@@ -2,13 +2,13 @@
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
   padding: 1rem 3rem;
-  background: rgba(15,15,13,0.6);
+  background: var(--nav-bg);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid transparent;
   transition: background .3s, border-color .3s;
 }
 .scrolled {
-  background: rgba(15,15,13,0.92);
+  background: var(--nav-bg);
   border-color: var(--border);
 }
 .logo {
@@ -32,6 +32,13 @@
   transition: border-color .2s, color .2s;
 }
 .socialBtn:hover { border-color: var(--lime); color: var(--lime); }
+.themeToggle {
+  width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid var(--border); border-radius: 6px; background: var(--bg3);
+  color: var(--cream); cursor: pointer; flex-shrink: 0;
+}
+.themeToggle:hover { border-color: var(--lime); color: var(--lime); }
+.themeToggle:focus-visible { outline: 2px solid var(--ice); outline-offset: 3px; }
 .burger {
   display: none; background: none; border: none;
   color: var(--cream); font-size: 1.3rem; cursor: pointer;
