@@ -42,7 +42,7 @@ export default function Credentials() {
         </a>
 
         <div className={styles.grid}>
-          {(tab === 'ibm' ? ibm : other).map(c => (
+          {[...(tab === 'ibm' ? ibm : other)].sort((a, b) => Number(a.num) - Number(b.num)).map(c => (
             <div key={c.num} className={`${styles.card} ${tab==='other' ? styles.cardOther : ''}`}>
               <div className={styles.num}>{c.num}</div>
               <div className={styles.issuer}>{c.issuer}</div>

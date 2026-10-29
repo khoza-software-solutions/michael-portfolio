@@ -1,10 +1,37 @@
 import { useEffect, useState } from 'react'
 import styles from './Hero.module.css'
 import michaelPhoto from '../assets/michael.jpg'
+import michaelPhotoOne from '../assets/mypic1.jpeg'
+import michaelPhotoTwo from '../assets/mypic2.jpeg'
+import { Pause, Play, FileText, Download } from 'lucide-react'
+import michaelCV from '../assets/Michael-Khoza-CV.pdf'
+
+const portraits = [
+  { src: michaelPhoto, crop: styles.originalPortrait, alt: 'Michael Khoza wearing sunglasses' },
+  { src: michaelPhotoOne, crop: styles.jacketPortrait, alt: 'Michael Khoza in a leather jacket' },
+  { src: michaelPhotoTwo, crop: styles.suitPortrait, alt: 'Michael Khoza in a suit' },
+]
 
 export default function Hero() {
   const [visible, setVisible] = useState(false)
-  useEffect(() => { setTimeout(() => setVisible(true), 100) }, [])
+  const [portraitIndex, setPortraitIndex] = useState(0)
+  const [paused, setPaused] = useState(false)
+  const [reducedMotion, setReducedMotion] = useState(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+  useEffect(() => {
+    const timer = setTimeout(() => setVisible(true), 100)
+    return () => clearTimeout(timer)
+  }, [])
+  useEffect(() => {
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const update = () => setReducedMotion(media.matches)
+    media.addEventListener('change', update)
+    return () => media.removeEventListener('change', update)
+  }, [])
+  useEffect(() => {
+    if (paused || reducedMotion) return
+    const timer = setInterval(() => setPortraitIndex(index => (index + 1) % portraits.length), 4800)
+    return () => clearInterval(timer)
+  }, [paused, reducedMotion])
 
   return (
     <section id="hero" className={styles.hero}>
@@ -35,12 +62,18 @@ export default function Hero() {
             <a href="https://github.com/Michael-Khoza" target="_blank" rel="noreferrer" className="btn-secondary">
               View Projects ↗
             </a>
+            <a href={michaelCV} target="_blank" rel="noopener noreferrer" className="btn-secondary">
+              <FileText size={18} aria-hidden="true" /> View CV
+            </a>
+            <a href={michaelCV} download="Michael-Khoza-CV.pdf" className="btn-secondary">
+              <Download size={18} aria-hidden="true" /> Download CV
+            </a>
           </div>
 
           <div className={styles.stats}>
             {[
               { num: '13', label: 'Credentials' },
-              { num: '4',  label: 'Competitions' },
+              { num: '7',  label: 'Pitching Competitions' },
               { num: 'ICI', label: 'Startup Founder', accent: true },
             ].map(s => (
               <div key={s.label} className={styles.statItem}>
@@ -55,9 +88,18 @@ export default function Hero() {
           <div className={styles.photoGlow}></div>
           <div className={styles.photoRing}>
             <div className={styles.photoInner}>
-              <img src={michaelPhoto} alt="Michael Khoza" className={styles.photo} />
+              {portraits.map((portrait, index) => (
+                <div key={portrait.src} className={`${styles.slide} ${index === portraitIndex ? styles.activeSlide : ''} ${paused || reducedMotion ? styles.staticSlide : ''}`} aria-hidden={index !== portraitIndex}>
+                  <img src={portrait.src} alt={portrait.alt} className={`${styles.photo} ${portrait.crop}`} />
+                </div>
+              ))}
             </div>
           </div>
+          {!reducedMotion && (
+            <button type="button" className={styles.slideshowToggle} onClick={() => setPaused(value => !value)} aria-label={paused ? 'Play portrait slideshow' : 'Pause portrait slideshow'} title={paused ? 'Play portrait slideshow' : 'Pause portrait slideshow'}>
+              {paused ? <Play size={16} aria-hidden="true" /> : <Pause size={16} aria-hidden="true" />}
+            </button>
+          )}
           <div className={styles.photoBadge}>
             <span className={styles.badgeDot}></span>
             <span className={styles.badgeText}>Open to Work</span>
