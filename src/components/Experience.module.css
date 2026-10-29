@@ -3,15 +3,16 @@
 .card {
   background: var(--bg3); border: 1px solid var(--border);
   border-radius: 10px; padding: 1.5rem;
-  display: flex; gap: 2rem; align-items: flex-start;
+  display: grid; grid-template-columns: 10rem minmax(0, 1fr); gap: 2rem; align-items: start;
   transition: border-color .2s;
 }
 .card:hover { border-color: var(--khaki2); }
-.year { font-family: var(--font-display); font-weight: 800; font-size: 1.3rem; color: var(--khaki2); min-width: 52px; padding-top: .1rem; }
+.year { font-family: var(--font-display); font-weight: 800; font-size: 1.1rem; color: var(--khaki2); padding-top: .1rem; white-space: nowrap; }
+.card > div:last-child { min-width: 0; overflow-wrap: anywhere; }
 .title { font-family: var(--font-display); font-weight: 700; font-size: 1rem; color: var(--cream); margin-bottom: .2rem; }
 .org { font-size: .75rem; color: var(--lime); font-weight: 500; margin-bottom: .4rem; text-transform: uppercase; letter-spacing: .05em; }
 .desc { font-size: .84rem; color: var(--khaki); line-height: 1.7; }
 .detailHeading { font-size: .8rem; font-weight: 600; color: var(--cream); margin: 1rem 0 .35rem; }
 @media (max-width: 600px) {
-  .card { flex-direction: column; gap: .75rem; }
+  .card { grid-template-columns: minmax(0, 1fr); gap: .75rem; }
 }
